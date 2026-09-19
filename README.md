@@ -14,18 +14,10 @@
 {
   "username": "2023123456",
   "password": "your_password",
-  "isp": "whaust"
+  "isp": "local"
 }
 ```
 
-ISP 后缀对照：
-
-| 值         | 运营商 |
-| ---------- | ------ |
-| `wcmcc`    | 移动   |
-| `unicom`   | 联通   |
-| `wtelecom` | 电信   |
-| `whaust`   | 校园网 |
 
 ## 三、任务计划程序部署
 
