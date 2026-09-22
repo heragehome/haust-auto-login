@@ -1,0 +1,46 @@
+{
+  "_comment": "校园网自动认证配置 —— 协议已按 2026-09-01 实测抓包校准。密码为明文存储，注意保管此文件。",
+
+  "credentials": {
+    "username": "请输入账号",
+    "password": "请输入密码",
+    "isp": "local",
+    "timeLimit": ""
+  },
+
+  "network": {
+    "_comment": "认证服务器（Portal）配置，2026-09-01 实测确认，一般不需要改",
+    "authServer": "10.100.51.1",
+    "loginApiPath": "/api/account/login",
+    "statusApiPath": "/api/account/status",
+    "csrfTokenApiPath": "/api/csrf-token",
+    "nasId": "1"
+  },
+
+  "detection": {
+    "_comment": "网络探测配置",
+    "probeUrl": "http://www.msftconnecttest.com/connecttest.txt",
+    "expectRedirect": "10.100.51.1",
+    "timeoutSec": 5
+  },
+
+  "portal": {
+    "_comment": "自助服务门户（认证成功后跳转的 210.43.0.48），用于在线二次确认与下线",
+    "baseUrl": "http://210.43.0.48",
+    "verifyPath": "/mac/?clientIP=",
+    "logoutPath": "/mac/loginOut?clientIP="
+  },
+
+  "advanced": {
+    "_comment": "maxRetries: 登录失败重试次数；retryDelaySec: 重试间隔秒数",
+    "maxRetries": 3,
+    "retryDelaySec": 5,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+  },
+
+  "log": {
+    "logFile": "./campus-auth.log",
+    "maxLogSizeKB": 512,
+    "logLevel": "INFO"
+  }
+}
