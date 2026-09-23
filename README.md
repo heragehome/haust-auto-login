@@ -1,4 +1,4 @@
-# haust-auto-login
+**校园网自动认证部署指南**
 （大学掌 · POST 版）
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
