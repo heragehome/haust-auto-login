@@ -1,7 +1,25 @@
 # 校园网自动认证（大学掌 · POST 版）
 
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![PowerShell](https://img.shields.io/badge/PowerShell-5.1+-blue.svg)
+![Windows](https://img.shields.io/badge/Platform-Windows-0078d6.svg)
+![Auth: POST + CSRF](https://img.shields.io/badge/Auth-POST%2BCSRF-important.svg)
+
 > **河南科技大学（HAUST）校园网自动认证工具**，零常驻 PowerShell 脚本 + Windows 任务计划程序，双击即用。
 > 适用于使用「大学掌（autewifi.cn）」认证服务的河南高校（河科大、河大、新医等）。
+
+<details>
+<summary><b>English Abstract</b></summary>
+
+**campus-auth v2.0** — a zero-resident **Windows PowerShell** auto-login for the **Captive-Portal** network at **Henan University of Science and Technology (HAUST)** and other universities using the **"Daxuezhang" (autewifi.cn)** platform.
+
+- **Authentication**: POST JSON API with **CSRF Token**, no cookies, keep-alive reuse.
+- **Scheduling**: auto-triggered at user logon, on network change (event 10000), and every 10 minutes via Windows Task Scheduler. No daemon stays resident.
+- **Companion**: pairs with [v1.0](https://github.com/heragehome/haust-auto-login/releases/tag/v1.0) (legacy Ruijie ePortal, GET + JSONP) to show how the same university evolved across two authentication generations — a practical **GET vs POST** case for network-automation / reverse-engineering study.
+
+> **Disclaimer**: For study & research only; do not violate your university's network policies. Provided AS-IS with no warranty; use at your own risk.
+
+</details>
 
 ---
 
@@ -103,7 +121,7 @@
 }
 ```
 
-> ⚠️ **密码为明文存储**，认证协议本身即明文（HTTP 无加密层），请勿把本文件夹提交到公开仓库。
+> ⚠️ **账号密码以明文保存在 `config.json`**（认证走 HTTP 明文，无加密层）。请勿在**填入真实密码后**再把该文件夹上传或分享；提交到仓库的 `config.json` 仅含占位符（`请输入账号` / `请输入密码`），不含任何真实凭据。
 
 ---
 
@@ -191,7 +209,7 @@
 ## 十、已知限制
 
 - **验证码（code=2）无法自动化**：连续输错密码后需浏览器手动登录一次。
-- **密码明文**：协议本身明文传输，请勿将本文件夹提交到公开仓库。
+- **密码明文**：认证协议明文传输，`config.json` 中的账号密码以明文保存在本机。**填入真实密码后请勿再将本文件夹提交/分享**；仓库中的 `config.json` 仅含占位符。
 - **IPv6 未验证**：本协议只覆盖 IPv4 认证。
 - **皮肤名变化**：学校可能更换登录页皮肤（`default`↔`stu-xy`），脚本不硬编码，自动跟随重定向。
 
