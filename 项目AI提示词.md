@@ -1,6 +1,23 @@
-# 校园网自动认证
+# 校园网自动认证（大学掌 · POST 版）
 
 零常驻 PowerShell 脚本，配合 Windows 任务计划程序实现校园网自动登录。
+
+## 🎯 项目定位
+
+本脚本是**河南科技大学（HAUST）新版校园网（大学掌 / autewifi.cn）的自动认证实现**，属于 POST 认证案例。
+
+与本仓库 [v1.0](https://github.com/heragehome/haust-auto-login/releases/tag/v1.0)（锐捷 ePortal，GET 认证）组成**同一高校两代认证系统的对照案例**：
+
+- **v1.0（旧，锐捷）＝ GET 认证案例**：透明代理劫持 + 302/200 探测 + `GET /eportal/portal/login` 表单 + JSONP 解析。
+- **v2.0（本版，大学掌）＝ POST 认证案例**：自动发现网关 → 取 CSRF Token → `POST /api/account/login`（带 X-CSRF-Token 头）→ 状态接口复查。
+
+> 对比两版即可理解 GET 表单认证 与 POST JSON API 认证的协议差异（请求头携带 vs URL 传参、CSRF 会话绑定、JSONP vs JSON），适合作为强制门户认证的逆向与二次开发参考。
+
+**主要面向**：① 河科大 / 使用大学掌认证的河南高校学生（直接部署使用）；② 社区 / 开发者（协议逆向、迁移与二次开发案例）。
+
+---
+
+## 协议参考（本版为 POST）
 
 **协议已于 2026-09-01 在校实测校准**（基于完整 HAR 抓包），四个框架期遗留问题全部确认：
 

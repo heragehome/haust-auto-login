@@ -71,9 +71,11 @@ $triggers += $triggerLogon
 Write-Host "  [✓] 触发器1: 用户登录时" -ForegroundColor Green
 
 # 2. 定时轮询（兜底）
+# 注意：不要传 -RepetitionDuration ([TimeSpan]::MaxValue)，
+# 它会产生 P99999999DT23H59M59S 超出任务计划程序的 Duration 上限，
+# 触发 HRESULT 0x80041318 注册失败。省略 Duration 即表示“无限期”轮询。
 $triggerPoll = New-ScheduledTaskTrigger -Once -At (Get-Date) `
-  -RepetitionInterval (New-TimeSpan -Minutes $PollIntervalMin) `
-  -RepetitionDuration ([TimeSpan]::MaxValue)
+  -RepetitionInterval (New-TimeSpan -Minutes $PollIntervalMin)
 $triggers += $triggerPoll
 Write-Host "  [✓] 触发器2: 每 ${PollIntervalMin} 分钟轮询" -ForegroundColor Green
 
