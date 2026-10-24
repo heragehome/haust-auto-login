@@ -7,7 +7,7 @@
 ![Auth: POST + CSRF](https://img.shields.io/badge/Auth-POST%2BCSRF-important.svg)
 
 > **河南科技大学（HAUST）校园网自动认证工具**，零常驻 PowerShell 脚本 + Windows 任务计划程序，双击即用。
-> 适用于使用「大学掌（autewifi.cn）」认证服务的河南高校（河科大、河大、新医等）。
+> 适用于使用「大学掌（autewifi.cn）」认证服务的河南高校（河科大、河大、河医药等）。
 
 <details>
 <summary><b>English Abstract</b></summary>
@@ -91,7 +91,7 @@
   "credentials": {
     "username": "请输入账号",
     "password": "请输入密码",
-    "isp": "local",          // 运营商：local / wcmcc(移动) / unicom(联通) / wtelecom(电信)
+    "isp": "local",          // 运营商：local(正常情况应该首选这个) / wcmcc(移动) / unicom(联通) / wtelecom(电信)
     "timeLimit": ""
   },
   "network": {
